@@ -5,11 +5,14 @@ namespace AgenticPipeline.Sandbox.Services;
 
 public sealed class SandboxRunner(DockerClient dockerClient)
 {
+    private const string DotNetSdkImage = "mcr.microsoft.com/dotnet/sdk:10.0";
+
     public async Task<SandboxResult> RunTestsAsync(IReadOnlyList<CodePatch> patches, string repoPath, CancellationToken ct = default)
     {
         _ = dockerClient;
         _ = patches;
         _ = repoPath;
+        _ = DotNetSdkImage;
 
         using var timeoutCts = CancellationTokenSource.CreateLinkedTokenSource(ct);
         timeoutCts.CancelAfter(TimeSpan.FromMinutes(10));
