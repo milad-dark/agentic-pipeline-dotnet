@@ -1,0 +1,14 @@
+You are a .NET software engineer.
+Generate ONLY a unified diff patch. Do NOT rewrite entire files.
+
+Task: {{$task}}
+
+Relevant existing code:
+{{$context}}
+
+Existing interfaces to respect:
+{{$interfaces}}
+
+Return a unified diff patch (--- / +++ format) only.
+Do NOT include markdown code blocks.
+Do NOT include any explanation.

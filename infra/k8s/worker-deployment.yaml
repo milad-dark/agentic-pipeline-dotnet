@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: agentic-pipeline-worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: agentic-pipeline-worker
+  template:
+    metadata:
+      labels:
+        app: agentic-pipeline-worker
+    spec:
+      containers:
+        - name: worker
+          image: ghcr.io/milad-dark/agentic-pipeline-worker:latest
