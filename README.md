@@ -1,4 +1,4 @@
-# AgenticPipeline (.NET 8)
+# AgenticPipeline (.NET 10)
 
 Enterprise agentic pipeline that automates Jira task analysis to draft GitHub PR creation through orchestrated specialist agents.
 
@@ -11,7 +11,7 @@ Jira Input -> Security -> Planning -> Context (RAG) -> Code -> QA Sandbox -> Rev
 ```
 
 ## Prerequisites
-- .NET 8 SDK
+- .NET 10 SDK
 - Docker / Docker Compose
 - PostgreSQL (pgvector)
 - Redis
