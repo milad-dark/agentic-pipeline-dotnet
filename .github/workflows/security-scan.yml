@@ -1,0 +1,19 @@
+name: Security Scan
+on:
+  pull_request:
+    branches: [main]
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - run: dotnet list AgenticPipeline.sln package --vulnerable
+      - name: Secret scan
+        run: |
+          if grep -R --line-number -E "(api[_-]?key|secret|password\s*=)" src tests; then
+            echo "Potential secret pattern found"
+            exit 1
+          fi

@@ -1,0 +1,24 @@
+You are a software architect analyst.
+Analyze the following Jira task and return a structured execution plan.
+
+Jira Task:
+Title: {{$title}}
+Description: {{$description}}
+Acceptance Criteria: {{$criteria}}
+
+Return ONLY valid JSON with this structure:
+{
+  "jiraTicketId": "",
+  "title": "",
+  "affectedRepositories": [],
+  "impactedModules": [],
+  "complexity": "low|medium|high",
+  "missingRequirements": [],
+  "suggestedBranchName": "",
+  "executionSteps": [
+    { "id": "", "description": "", "targetFile": "", "order": 0 }
+  ],
+  "validationStrategy": ""
+}
+
+IMPORTANT: Do NOT generate any code. Only analyze and plan.

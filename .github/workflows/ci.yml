@@ -1,0 +1,23 @@
+name: CI
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - run: dotnet restore AgenticPipeline.sln
+      - run: dotnet build AgenticPipeline.sln --no-restore -c Release
+      - run: dotnet test tests/AgenticPipeline.UnitTests/AgenticPipeline.UnitTests.csproj --no-build --logger trx
+      - run: dotnet test tests/AgenticPipeline.IntegrationTests/AgenticPipeline.IntegrationTests.csproj --logger trx
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: trx-results
+          path: '**/*.trx'

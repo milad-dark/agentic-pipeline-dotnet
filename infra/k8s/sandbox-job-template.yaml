@@ -1,0 +1,12 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: agentic-pipeline-sandbox
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: sandbox
+          image: mcr.microsoft.com/dotnet/sdk:8.0
+          command: ["dotnet", "test", "--no-build", "--logger", "trx"]
